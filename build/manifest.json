@@ -1,0 +1,18 @@
+{
+  "format_version": 1,
+  "header": {
+    "description": "StoneEdit",
+    "name": "StoneEdit",
+    "uuid": "eeb3c7b9-b068-49d2-b59c-cbd2ffe15dc6",
+    "version": [0, 1, 1],
+    "min_engine_version": [1, 9, 0]
+  },
+  "modules": [
+    {
+      "description": "data",
+      "type": "data",
+      "uuid": "980a396c-16ac-4e1c-8771-43f97addf3da",
+      "version": [0, 0, 0]
+    }
+  ]
+}

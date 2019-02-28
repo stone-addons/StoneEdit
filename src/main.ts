@@ -77,28 +77,18 @@ namespace Server {
                 return limit([x + i, y + j, z + k]);
               };
             } else throw "???";
-            const result: ([number, number] | null)[] = [];
-            result.push([0, 0]);
-            for (let i = 1; i <= radius; i++) {
-              result.push([0, i]);
-              result.push([0, -i]);
-            }
+            const result: ([number, number, number] | null)[] = [];
+            result.push([0, -radius, radius]);
             for (let p = 1; p <= radius; p++) {
-              result.push([p, 0]);
-              result.push([-p, 0]);
               const t = Math.sqrt(radius ** 2 - p ** 2);
-              for (let i = 1; i < t; i++) {
-                result.push([p, i]);
-                result.push([p, -i]);
-                result.push([-p, -i]);
-                result.push([-p, i]);
-              }
+              result.push([p, -t, t]);
+              result.push([-p, -t, t]);
             }
             const filtered = result.filter(x => x != null);
             const blname = block.value.name.split(":")[1];
-            filtered.forEach(([i, j]) => {
-              const a0 = F(i, j, 0);
-              const a1 = F(i, j, height);
+            filtered.forEach(([i, j1, j2]) => {
+              const a0 = F(i, j1, 0);
+              const a1 = F(i, j2, height);
               const pos = [...a0, ...a1].join(" ");
               this.invokeCommand(`/fill ${pos} ${blname} 0 replace`);
             });

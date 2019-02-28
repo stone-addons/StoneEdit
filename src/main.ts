@@ -55,26 +55,21 @@ namespace Server {
           ) {
             if (radius < 1) return `Empty`;
             let F: (i: number, j: number, k: number) => [number, number, number] | null;
-            function limit(
-              inp: [number, number, number]
-            ): [number, number, number] | null {
-              return inp[1] < 0 || inp[1] > 255 ? null : inp;
-            }
             const xcenter = center.map(Math.floor) as [number, number, number];
             if (face == "X") {
               F = (i, j, k) => {
                 const [x, y, z] = xcenter;
-                return limit([x + k, y + i, z + j]);
+                return [x + k, y + i, z + j];
               };
             } else if (face == "Y") {
               F = (i, j, k) => {
                 const [x, y, z] = xcenter;
-                return limit([x + i, y + k, z + j]);
+                return [x + i, y + k, z + j];
               };
             } else if (face == "Z") {
               F = (i, j, k) => {
                 const [x, y, z] = xcenter;
-                return limit([x + i, y + j, z + k]);
+                return [x + i, y + j, z + k];
               };
             } else throw "???";
             const result: ([number, number, number] | null)[] = [];

@@ -1,4 +1,4 @@
-/// <reference types="./stone" />
+/// <reference types="stoneserver-scripting-types" />
 
 namespace Server {
   const system = server.registerSystem<IStoneServerSystem<{}>>(0, 0);
